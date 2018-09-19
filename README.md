@@ -3,12 +3,14 @@
 This is a simple and flexible Python library to create and format your graphs in GDF.
 
 ## Installation
-
-<!-- TODO -->
+```python
+#TODO
+```
 
 ## GDF format information
 
 **GDF types:**
+
 |    Type  |   Explanation     |
 |:--------:|:-----------------:|
 | VARCHAR  | A string          |
