@@ -1,4 +1,4 @@
-# GDF_Formatter
+# GDF Formatter
 
 This is a simple and flexible Python library to create and format your graphs in GDF.
 
@@ -7,6 +7,16 @@ This is a simple and flexible Python library to create and format your graphs in
 <!-- TODO -->
 
 ## GDF format information
+
+**GDF types:**
+|    Type  |   Explanation     |
+|:--------:|:-----------------:|
+| VARCHAR  | A string          |
+| BOOLEAN  | `true` or `false` |
+| INTERGER | Interger number   |
+| DOUBLE   | Float number      |
+
+**Default Attributes:**
 
 For nodes, the default GDF attributes are:
 
