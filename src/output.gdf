@@ -1,0 +1,10 @@
+nodedef>name VARCHAR,label VARCHAR,type VARCHAR,connections DOUBLE,age INTERGER
+2,Bar,t1,3,
+3,Qux,,8,21
+1,Foo,t1,2,80
+
+edgedef>node1 VARCHAR,node2 VARCHAR,weight DOUBLE,influence DOUBLE
+2,1,0,9
+1,2,8,8
+2,1,0,
+1,2,0.3,
