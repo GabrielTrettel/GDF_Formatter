@@ -11,98 +11,8 @@ This Source Code Form is “Incompatible With Secondary Licenses”, as defined
 by the Mozilla Public License, v. 2.0.
 '''
 
-
-class Node():
-    _used_node_attr = set()
-    _header = { 'name':'VARCHAR',
-                'label':'VARCHAR',
-                'class':'VARCHAR',
-                'visible':'BOOLEAN',
-                'labelvisible':'BOOLEAN',
-                'height':'DOUBLE',
-                'x':'DOUBLE',
-                'y':'DOUBLE',
-                'width':'DOUBLE',
-                'color':'VARCHAR' }
-
-    def __init__(self, attr_dict):
-        if self.valid(attr_dict):
-            self.attributes = {key:value for key,value in attr_dict.items()}
-            Node._used_node_attr.update(attr_dict.keys())
-
-    def valid(self, attr_dict):
-        for attribute in attr_dict.keys():
-            if attribute not in Node._header:
-                raise ValueError('Trying to add a node with unidentified attributes')
-        return True
-
-    def __eq__(self, other):
-        if isinstance(other, Node):
-            return self.attributes['name'] == other.attributes['name']
-        return self.attributes['name'] == other
-
-    def __hash__(self):
-        return hash(self.attributes['name'])
-
-    def __str__(self):
-        formatter = lambda key: str(self.attributes[key]) if key in self.attributes else ""
-        return ",".join(formatter(key) for key in Node._header.keys() if key in Node._used_node_attr)
-
-    @classmethod
-    def update(cls, new_attr):
-        Node._header.update(new_attr)
-
-    @classmethod
-    def header(cls):
-        return {key:value for key,value in Node._header.items() if key in Node._used_node_attr}
-
-
-
-
-class Edge():
-    _used_edge_attr = set()
-    _header = { 'node1':'VARCHAR',
-                'node2':'VARCHAR',
-                'weight':'DOUBLE',
-                'directed':'BOOLEAN',
-                'color':'VARCHAR' }
-
-    def __init__(self, attr_dict):
-        if self.valid(attr_dict):
-            self.attributes = {key:value for key,value in attr_dict.items()}
-            Edge._used_edge_attr.update(attr_dict.keys())
-
-    def valid(self, attr_dict):
-        for attribute in attr_dict.keys():
-            if attribute not in Edge._header:
-                raise ValueError('Trying to add a edge with unidentified attributes')
-        return True
-
-    def __eq__(self, node):
-        return (self.attributes['node1'] != node.attributes['node1']) and (self.attributes['node2'] != node.attributes['node1'])
-
-    def __hash__(self):
-        return hash("".join(str(v) for v in self.attributes.values()))
-
-    def __str__(self):
-        formatter = lambda key: str(self.attributes[key]) if key in self.attributes else ""
-        return ",".join(formatter(key) for key in Edge._header.keys() if key in Edge._used_edge_attr)
-
-    @classmethod
-    def update(cls, new_attr):
-        Edge._header.update(new_attr)
-
-    @classmethod
-    def header(cls):
-        return {key:value for key,value in Edge._header.items() if key in Edge._used_edge_attr}
-
-    def node1(self):
-        return self.attributes['node1']
-
-    def node2(self):
-        return self.attributes['node2']
-
-
+from node import Node
+from edge import Edge
 
 
 class Graph():
@@ -110,8 +20,8 @@ class Graph():
         self.__allow_equal_edges = allow_equal_edges
         self.__node_list = set()
         self.__edge_list = set()
-        Node.update(custom_node_attrs)
-        Edge.update(custom_edge_attrs)
+        Node.update(custom_nodes)
+        Edge.update(custom_edges)
         Node.update(kwargs)
 
     def validateNode(self, new_node):
@@ -154,21 +64,3 @@ class Graph():
 
             edges = '\n' + "\n".join(str(edge) for edge in self.__edge_list)
             fl.writelines(edges)
-
-
-if __name__ == "__main__":
-
-    node = {'type':'VARCHAR', 'connections':'DOUBLE'}
-    edge = {'influence':'DOUBLE', 'weight':'DOUBLE'}
-    graph = Graph(custom_node_attrs=node, custom_edge_attrs=edge, allow_equal_nodes=True, age='INTERGER')
-
-    graph.addNode(name='1', label='Foo', type='t1', connections=2, age=80)
-    graph.addNode(name='2', label='Bar', type='t1', connections=3)
-    graph.addNode(name='3', label='Qux', connections=8, age=21)
-
-    graph.addLink(node1='1', node2='2', weight=0.3)
-    graph.addLink(node1='1', node2='2', weight=8, influence=8)
-    graph.addLink(node1='2', node2='1', weight=0)
-    graph.addLink(node1='2', node2='1', weight=0, influence=9)
-
-    graph.dump(output_file='output.gdf')
