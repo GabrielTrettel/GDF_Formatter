@@ -59,7 +59,7 @@ class Graph():
             nodes = '\n' + "\n".join(str(node) for node in self.__node_list) + '\n'
             fl.writelines(nodes)
 
-            edge_header = "\nedgedef>" + ",".join(f(k,v) for k,v in Edge.header().items() )
+            edge_header = "edgedef>" + ",".join(f(k,v) for k,v in Edge.header().items() )
             fl.writelines(edge_header)
 
             edges = '\n' + "\n".join(str(edge) for edge in self.__edge_list)
