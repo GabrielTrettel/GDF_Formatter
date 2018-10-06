@@ -11,8 +11,8 @@ This Source Code Form is “Incompatible With Secondary Licenses”, as defined
 by the Mozilla Public License, v. 2.0.
 '''
 
-from node import Node
-from edge import Edge
+from .node import Node
+from .edge import Edge
 
 
 class Graph():
