@@ -3,8 +3,9 @@
 This is a simple and flexible Python library to create and format your graphs in GDF.
 
 ## Installation
-```python
-#TODO
+You can install this package from [PyPi](https://pypi.org/project/gdf-formatter/)
+```
+pip install gdf-formatter
 ```
 
 ## GDF format information
@@ -46,6 +47,11 @@ And for edges, the default GDF attributes are:
 | color        | VARCHAR  |
 
 ## How to use
+
+**Importing the package**
+```python
+from gdf_formatter import Graph
+```
 
 **Declaring a graph:**
 
@@ -95,7 +101,7 @@ graph.dump(output_file='output.gdf')
 **Example**
 
 ```python
-from graph import Graph
+from gdf_formatter import Graph
 
 node = {'type':'VARCHAR', 'connections':'DOUBLE'}
 edge = {'influence':'DOUBLE', 'weight':'DOUBLE'}
@@ -119,7 +125,6 @@ nodedef>name VARCHAR,label VARCHAR,type VARCHAR,connections DOUBLE,age INTERGER
 2,Bar,t1,3,
 3,Qux,,8,21
 1,Foo,t1,2,80
-
 edgedef>node1 VARCHAR,node2 VARCHAR,weight DOUBLE,influence DOUBLE
 2,1,0,9
 1,2,8,8
