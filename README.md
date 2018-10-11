@@ -8,6 +8,8 @@ You can install this package from [PyPi](https://pypi.org/project/gdf-formatter/
 pip install gdf-formatter
 ```
 
+Or, for Arch systems, it's on [AUR](https://aur.archlinux.org/packages/python-gdf-formatter/) by installing ```python-gdf-formatter```.
+
 ## GDF format information
 
 **GDF types:**
