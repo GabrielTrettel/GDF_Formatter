@@ -1,5 +1,7 @@
 # GDF Formatter
 
+[![GitHub license](https://img.shields.io/github/license/GabrielTrettel/GDF_Formatter.svg)](https://github.com/GabrielTrettel/GDF_Formatter/blob/master/LICENSE)
+
 This is a simple and flexible Python library to create and format your graphs in GDF.
 
 ## Installation
