@@ -4,6 +4,7 @@
 [![PyPI](https://img.shields.io/pypi/v/gdf-formatter.svg)](https://pypi.org/project/gdf-formatter/)
 [![AUR](https://img.shields.io/aur/version/python-gdf-formatter.svg)](https://aur.archlinux.org/packages/python-gdf-formatter/)
 [![GitHub license](https://img.shields.io/github/license/GabrielTrettel/GDF_Formatter.svg)](https://github.com/GabrielTrettel/GDF_Formatter/blob/master/LICENSE)
+[![Downloads](https://pepy.tech/badge/gdf-formatter)](https://pepy.tech/project/gdf-formatter)
 
 This is a simple and flexible Python library to create and format your graphs in GDF.
 
